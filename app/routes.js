@@ -1,9 +1,9 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Login from "./screens/login/index";
-import Home from "./screens/home";
+import Login from './screens/login/index';
+import Home from './screens/home';
 
 const Routes = () => {
   const Stack = createNativeStackNavigator();
