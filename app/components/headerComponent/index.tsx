@@ -4,10 +4,10 @@ import { View, Text, StatusBar } from "react-native";
 import styles from "./styles";
 
 interface HeaderProps {
-  title: string;
+  title?: string;
 }
 
-const HeaderComponent = ({title} : HeaderProps) => {
+const HeaderComponent = ({title = "teste"} : HeaderProps) => {
   return (
     <View>
       <StatusBar backgroundColor="#3B63F1" barStyle="default"/>
