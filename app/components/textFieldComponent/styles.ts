@@ -12,9 +12,9 @@ const styles = StyleSheet.create({
   input: {
     width: 300,
     fontSize: 20,
+    borderRadius: 5,
     backgroundColor: 'white',
     fontFamily: 'Barlow-SemiBold',
-    borderRadius: 5,
   },
 });
 

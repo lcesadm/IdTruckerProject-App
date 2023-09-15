@@ -7,18 +7,17 @@ import LinearGradient from 'react-native-linear-gradient';
 import InputComponent from '../../components/textFieldComponent';
 import LightButtonComponent from '../../components/lightButtonComponent';
 
-import useLogin from './hooks/useLogin';
+import useRegister from './hooks/useRegister';
 import styles from './styles';
 
-const Login = ({ navigation }: any) => {
-  const { onButtonPress } = useLogin(navigation);
+const Register = ({ navigation }: any) => {
+  const { onButtonPress } = useRegister(navigation);
   return (
     <View>
       <LinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
-        colors={['#34CBCB', '#438CB3', '#005190']}
-        style={styles.background}>
+        colors={['#34CBCB', '#438CB3', '#005190']}>
         <StatusBar translucent={true} backgroundColor="transparent" />
         <Image
           style={styles.image}
@@ -28,21 +27,27 @@ const Login = ({ navigation }: any) => {
           <View style={styles.container}>
             <Text style={styles.textTitle}>IdTrucker</Text>
             <FontAwesomeIcon icon={faUserCircle} color={'white'} size={100} />
-            <Text style={styles.text}>Login</Text>
-            <InputComponent label="Email" placeholder="janedoe@gmail.com" />
+            <Text style={styles.text}>Registrar</Text>
+            <InputComponent label="Nome Completo" />
             <InputComponent
-              label="Senha"
-              secondaryLabel="Esqueci minha senha"
-              placeholder="********"
-              secureTextEntry={true}
+              label="RG"
+              placeholder="00.000.000-0"
+              keyboardType="numeric"
             />
+            <InputComponent
+              label="CPF"
+              placeholder="000.000.000-00"
+              keyboardType="numeric"
+            />
+            <InputComponent label="Email" />
+            <InputComponent label="Senha" secureTextEntry={true} />
             <View style={styles.containerButton}>
               <LightButtonComponent
-                title="Registrar"
-                onPress={() => onButtonPress('RegisterScreen')}
+                title="Voltar"
+                onPress={() => onButtonPress('Voltar')}
               />
               <LightButtonComponent
-                title="Login"
+                title="Registrar"
                 onPress={() => onButtonPress('HomeScreen')}
               />
             </View>
@@ -53,4 +58,4 @@ const Login = ({ navigation }: any) => {
   );
 };
 
-export default Login;
+export default Register;

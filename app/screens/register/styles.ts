@@ -32,9 +32,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     tintColor: '#445AA7',
   },
-  background: {
-    height: '100%',
-  },
 });
 
 export default styles;
