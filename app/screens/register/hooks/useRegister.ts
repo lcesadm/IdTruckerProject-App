@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import database from '@react-native-firebase/database';
 
-const useLogin = (navigation: any) => {
+const useRegister = (navigation: any) => {
   const onButtonPress = (screen: string) => {
-    navigation.navigate(screen);
+    screen == 'Voltar' ? navigation.goBack() : navigation.navigate(screen);
   };
 
   return { onButtonPress };
 };
 
-export default useLogin;
+export default useRegister;

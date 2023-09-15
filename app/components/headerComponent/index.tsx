@@ -18,8 +18,7 @@ const HeaderComponent = ({title} : HeaderProps) => {
         <ProgressBar style={styles.progressBar}progress={0.6} width={250} height={15} color={'#02fa44'} />
       </View>
     </View>
-  )
-
-}
+  );
+};
 
 export default HeaderComponent;

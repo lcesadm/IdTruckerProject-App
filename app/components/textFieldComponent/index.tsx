@@ -1,24 +1,46 @@
-import React from "react";
-import { View, Text, TextInput } from "react-native";
+import React from 'react';
+import { View, Text, TextInput } from 'react-native';
 
-import styles from "./styles";
+import styles from './styles';
 
 interface TextFieldProps {
   label: string;
+  secondaryLabel?: string;
   placeholder?: string;
-  secureTextEntry: boolean;
+  secureTextEntry?: boolean;
+  keyboardType?: string;
 }
 
-const TextFieldComponent = ({label, placeholder, secureTextEntry} : TextFieldProps) => {
+const TextFieldComponent = ({
+  label,
+  secondaryLabel,
+  placeholder,
+  secureTextEntry,
+  keyboardType,
+}: TextFieldProps) => {
   return (
     <View>
       <View style={styles.container}>
         <Text style={styles.label}>{label}</Text>
-        <TextInput style={styles.input} placeholder={placeholder} secureTextEntry={secureTextEntry} />
+        <TextInput
+          style={styles.input}
+          placeholder={placeholder}
+          secureTextEntry={secureTextEntry}
+          keyboardType={keyboardType}
+        />
+        {secondaryLabel!.length > 0 && (
+          <Text style={styles.label}>{secondaryLabel}</Text>
+        )}
       </View>
     </View>
-  )
+  );
+};
 
-}
+TextFieldComponent.defaultProps = {
+  secondaryLabel: '',
+  placeHolder: '',
+  secureTextEntry: false,
+  keyboardType: 'default',
+};
 
 export default TextFieldComponent;
