@@ -18,7 +18,7 @@ const PercursoScreen: React.FC<PercursoScreenProps> = ({isVisible, onClose}) => 
             onRequestClose={onClose}
         >
         <View style={styles.pmodalContainer}>
-            <View style={styles.pmodalContent}>
+            <View style={{ ...styles.modalContent, backgroundColor: '#533BBF'}}>
             
                 <TouchableOpacity onPress={onClose}>
                 <Image source={require('../icons/botao-excluir.png')} style={styles.close} />
@@ -28,7 +28,23 @@ const PercursoScreen: React.FC<PercursoScreenProps> = ({isVisible, onClose}) => 
                 <View style={styles.whiteLine}></View>
                 <View style={styles.line}>
                     <StatusBar backgroundColor="#3B63F1" barStyle="default"/>
-                    <Text style={styles.textline}>A</Text><Image source={require('../icons/seta-direita.png')} style={styles.seta}/>
+                    <Text style={{...styles.textline, color: '#533BBF' }}>A         B (345km)                1.1k XP</Text><Image source={require('../icons/seta-direita.png')} style={styles.seta}/>
+                </View>
+                <View style={styles.line}>
+                    <StatusBar backgroundColor="#3B63F1" barStyle="default"/>
+                    <Text style={{...styles.textline, color: '#533BBF' }}>A         B (221km)                 900 XP</Text><Image source={require('../icons/seta-direita.png')} style={styles.seta}/>
+                </View>
+                <View style={styles.line}>
+                    <StatusBar backgroundColor="#3B63F1" barStyle="default"/>
+                    <Text style={{...styles.textline, color: '#533BBF' }}>A         B (143km)                 220 XP</Text><Image source={require('../icons/seta-direita.png')} style={styles.seta}/>
+                </View>
+                <View style={styles.line}>
+                    <StatusBar backgroundColor="#3B63F1" barStyle="default"/>
+                    <Text style={{...styles.textline, color: '#533BBF' }}>A         B (404km)                1.3k XP</Text><Image source={require('../icons/seta-direita.png')} style={styles.seta}/>
+                </View>
+                <View style={styles.line}>
+                    <StatusBar backgroundColor="#3B63F1" barStyle="default"/>
+                    <Text style={{...styles.textline, color: '#533BBF' }}>A         B (345km)                1.1k XP</Text><Image source={require('../icons/seta-direita.png')} style={styles.seta}/>
                 </View>
             </View>
         </View>

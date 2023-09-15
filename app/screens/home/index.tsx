@@ -64,7 +64,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <HeaderComponent title='Gustavo Kiyoto' />
-      {/* Restante do código... */}
+      <Text style={styles.titulo}>Estatísticas</Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}

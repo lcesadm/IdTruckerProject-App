@@ -7,8 +7,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       backgroundColor: 'rgba(0, 0, 0, 0.5)',
     },
-    pmodalContent: {
-      backgroundColor: '#533BBF',
+    modalContent: {
       width: 350,
       height: 600,
       padding: 20,
@@ -19,15 +18,16 @@ const styles = StyleSheet.create({
         width: 35,
         height: 35,
         left: 140,
-        top: -15,
+        top: -12,
     },
     text:{
-        fontSize: 30,
+        fontSize: 35,
         color: "#fff",
         fontFamily: "Barlow-Bold",
+        marginTop: 10,
     },
     km:{
-        marginTop: 30,
+        marginTop: 40,
         fontSize: 45,
         color: "#fff",
         fontFamily: "Barlow-Bold",
@@ -48,16 +48,19 @@ const styles = StyleSheet.create({
         borderRadius: 20,
       },
       textline:{
-        fontSize: 24,
+        fontSize: 20,
         fontFamily: "Barlow-Bold",
         marginLeft: 10,
-        color: '#533BBF'
       },
       seta:{
         width: 30,
         height: 30,
-        marginLeft: 35,
-        marginTop: -28
+        marginLeft: 30,
+        marginTop: -26
+      },
+      star:{
+        width: 40,
+        height: 40
       }
       
   });
