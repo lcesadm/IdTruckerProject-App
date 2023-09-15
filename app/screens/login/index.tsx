@@ -1,7 +1,5 @@
 import React from 'react';
 import { View, Text, StatusBar, Image, ScrollView } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import LinearGradient from 'react-native-linear-gradient';
 
 import InputComponent from '../../components/textFieldComponent';
@@ -18,16 +16,19 @@ const Login = ({ navigation }: any) => {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         colors={['#34CBCB', '#438CB3', '#005190']}
-        style={styles.background}>
+        style={styles.backgroundContainer}>
         <StatusBar translucent={true} backgroundColor="transparent" />
         <Image
-          style={styles.image}
+          style={styles.backgroundImage}
           source={require('../../assets/img/background.png')}
         />
         <ScrollView>
           <View style={styles.container}>
             <Text style={styles.textTitle}>IdTrucker</Text>
-            <FontAwesomeIcon icon={faUserCircle} color={'white'} size={100} />
+            <Image
+              style={styles.userImage}
+              source={require('../../assets/img/user.png')}
+            />
             <Text style={styles.text}>Login</Text>
             <InputComponent label="Email" placeholder="janedoe@gmail.com" />
             <InputComponent
@@ -43,7 +44,7 @@ const Login = ({ navigation }: any) => {
               />
               <LightButtonComponent
                 title="Login"
-                onPress={() => onButtonPress('HomeScreen')}
+                onPress={() => onButtonPress('TabsNavigator')}
               />
             </View>
           </View>

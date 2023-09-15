@@ -4,7 +4,7 @@ import { View, Text, Pressable } from 'react-native';
 import styles from './styles';
 
 interface LightButtonProps {
-  onPress?: Function;
+  onPress?: () => void;
   title: string;
 }
 
@@ -17,7 +17,7 @@ const LightButtonComponent = ({ onPress, title }: LightButtonProps) => {
           pressed ? styles.btnPressed : styles.btnNormal
         }>
         {({ pressed }) => (
-          <Text style={[{ color: pressed ? '#445AA7' : 'white' }, styles.text]}>
+          <Text style={[{ color: pressed ? '#445AA7' : '#fff' }, styles.text]}>
             {title}
           </Text>
         )}

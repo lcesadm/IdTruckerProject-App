@@ -2,11 +2,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import LoginScreen from './screens/login';
-import HomeScreen from './screens/home';
-import RegisterScreen from './screens/register';
+import LoginScreen from '../screens/login';
+import RegisterScreen from '../screens/register';
+import TabsNavigator from './tabsNavigator';
 
-const Routes = () => {
+const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
 
   return (
@@ -18,13 +18,13 @@ const Routes = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
+          name="RegisterScreen"
+          component={RegisterScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="RegisterScreen"
-          component={RegisterScreen}
+          name="TabsNavigator"
+          component={TabsNavigator}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
@@ -32,4 +32,4 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+export default StackNavigator;

@@ -6,14 +6,14 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 20,
-    color: 'white',
+    color: '#fff',
     fontFamily: 'Barlow-SemiBold',
   },
   input: {
     width: 300,
     fontSize: 20,
     borderRadius: 5,
-    backgroundColor: 'white',
+    backgroundColor: '#fff',
     fontFamily: 'Barlow-SemiBold',
   },
 });

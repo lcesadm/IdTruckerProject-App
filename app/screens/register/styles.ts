@@ -1,11 +1,11 @@
-import { StyleSheet } from 'react-native';
-import { Dimensions } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const win = Dimensions.get('window');
 const ratio = win.width / 541;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginBottom: 100,
     alignItems: 'center',
   },
@@ -17,20 +17,25 @@ const styles = StyleSheet.create({
   textTitle: {
     margin: 40,
     fontSize: 60,
-    color: 'white',
+    color: '#fff',
     fontFamily: 'Barlow-Bold',
   },
   text: {
     margin: 10,
     fontSize: 40,
-    color: 'white',
+    color: '#fff',
     fontFamily: 'Barlow-SemiBold',
   },
-  image: {
+  backgroundImage: {
     width: win.width,
     height: 1150 * ratio,
     position: 'absolute',
     tintColor: '#445AA7',
+  },
+  userImage: {
+    width: 150,
+    height: 150,
+    tintColor: '#fff',
   },
 });
 

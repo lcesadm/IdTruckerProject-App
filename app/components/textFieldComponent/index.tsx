@@ -8,7 +8,7 @@ interface TextFieldProps {
   secondaryLabel?: string;
   placeholder?: string;
   secureTextEntry?: boolean;
-  keyboardType?: string;
+  keyboardType?: any;
 }
 
 const TextFieldComponent = ({

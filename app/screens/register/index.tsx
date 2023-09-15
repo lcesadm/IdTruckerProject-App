@@ -1,17 +1,16 @@
 import React from 'react';
 import { View, Text, StatusBar, Image, ScrollView } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import LinearGradient from 'react-native-linear-gradient';
 
 import InputComponent from '../../components/textFieldComponent';
 import LightButtonComponent from '../../components/lightButtonComponent';
+import TermModalComponent from '../../components/termModalComponent';
 
 import useRegister from './hooks/useRegister';
 import styles from './styles';
 
 const Register = ({ navigation }: any) => {
-  const { onButtonPress } = useRegister(navigation);
+  const { isVisible, onButtonPress, changeModal } = useRegister(navigation);
   return (
     <View>
       <LinearGradient
@@ -20,13 +19,16 @@ const Register = ({ navigation }: any) => {
         colors={['#34CBCB', '#438CB3', '#005190']}>
         <StatusBar translucent={true} backgroundColor="transparent" />
         <Image
-          style={styles.image}
+          style={styles.backgroundImage}
           source={require('../../assets/img/background.png')}
         />
         <ScrollView>
           <View style={styles.container}>
             <Text style={styles.textTitle}>IdTrucker</Text>
-            <FontAwesomeIcon icon={faUserCircle} color={'white'} size={100} />
+            <Image
+              style={styles.userImage}
+              source={require('../../assets/img/user.png')}
+            />
             <Text style={styles.text}>Registrar</Text>
             <InputComponent label="Nome Completo" />
             <InputComponent
@@ -48,11 +50,16 @@ const Register = ({ navigation }: any) => {
               />
               <LightButtonComponent
                 title="Registrar"
-                onPress={() => onButtonPress('HomeScreen')}
+                onPress={() => changeModal(true)}
               />
             </View>
           </View>
         </ScrollView>
+        <TermModalComponent
+          isVisible={isVisible}
+          onClose={() => changeModal(false)}
+          onPress={() => onButtonPress('TabsNavigator')}
+        />
       </LinearGradient>
     </View>
   );

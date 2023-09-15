@@ -2,11 +2,16 @@ import { useState } from 'react';
 import database from '@react-native-firebase/database';
 
 const useRegister = (navigation: any) => {
-  const onButtonPress = (screen: string) => {
-    screen == 'Voltar' ? navigation.goBack() : navigation.navigate(screen);
-  };
+  const [isVisible, setIsVisible] = useState(false);
 
-  return { onButtonPress };
+  const onButtonPress = (screen: string) => {
+    if (screen === 'Voltar') navigation.goBack();
+    changeModal(false);
+    navigation.navigate(screen);
+  };
+  const changeModal = (visible: boolean) => setIsVisible(visible);
+
+  return { isVisible, onButtonPress, changeModal };
 };
 
 export default useRegister;
