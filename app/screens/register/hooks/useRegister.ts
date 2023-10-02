@@ -6,8 +6,10 @@ const useRegister = (navigation: any) => {
 
   const onButtonPress = (screen: string) => {
     if (screen === 'Voltar') navigation.goBack();
-    changeModal(false);
-    navigation.navigate(screen);
+    else {
+      changeModal(false);
+      navigation.navigate(screen);
+    }
   };
   const changeModal = (visible: boolean) => setIsVisible(visible);
 

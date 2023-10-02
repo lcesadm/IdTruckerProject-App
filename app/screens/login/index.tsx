@@ -27,7 +27,7 @@ const Login = ({ navigation }: any) => {
             <Text style={styles.textTitle}>IdTrucker</Text>
             <Image
               style={styles.userImage}
-              source={require('../../assets/img/user.png')}
+              source={require('../../assets/img/profile.png')}
             />
             <Text style={styles.text}>Login</Text>
             <InputComponent label="Email" placeholder="janedoe@gmail.com" />

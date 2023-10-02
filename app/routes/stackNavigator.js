@@ -11,22 +11,10 @@ const StackNavigator = () => {
 
   return (
     <NavigationContainer initialRouteName="LoginScreen">
-      <Stack.Navigator>
-        <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="RegisterScreen"
-          component={RegisterScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="TabsNavigator"
-          component={TabsNavigator}
-          options={{ headerShown: false }}
-        />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+        <Stack.Screen name="TabsNavigator" component={TabsNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );

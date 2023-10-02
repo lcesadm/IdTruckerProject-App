@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import HeaderComponent from '../../components/headerComponent';
 import useHome from './hooks/useHome';
 import styles from './styles';
 import RegistrarComponent from '../../components/homeComponents/registrar';
+import ModalComponent from '../../components/modalComponent';
 
 // Importe os componentes modais correspondentes
 import PercursoScreen from '../../components/estatisticas/percursoScreen';
@@ -12,12 +13,13 @@ import ClassificacaoScreen from '../../components/estatisticas/classificacaoScre
 import AvaliacaoScreen from '../../components/estatisticas/avaliacaoScreen';
 
 const Home = () => {
-  const { } = useHome();
+  const { isVisible, showTripAlert } = useHome();
 
   // Estados e funções para controlar a visibilidade dos modais
   const [percursoModalVisible, setPercursoModalVisible] = useState(false);
   const [viagensModalVisible, setViagensModalVisible] = useState(false);
-  const [classificacaoModalVisible, setClassificacaoModalVisible] = useState(false);
+  const [classificacaoModalVisible, setClassificacaoModalVisible] =
+    useState(false);
   const [avaliacaoModalVisible, setAvaliacaoModalVisible] = useState(false);
 
   // Funções para abrir e fechar os modais
@@ -55,21 +57,40 @@ const Home = () => {
 
   // Dados dos botões (cores, nomes e ícones)
   const buttons = [
-    { color: '#533BBF', name: 'Percurso', icon: require('../../components/icons/maneira.png'), onPress: openPercursoModal },
-    { color: '#1F73B3', name: 'Viagens', icon: require('../../components/icons/corrida.png'), onPress: openViagensModal },
-    { color: '#2FB5B5', name: 'Classificação', icon: require('../../components/icons/avaliacao.png'), onPress: openClassificacaoModal },
-    { color: '#033C91', name: 'Avaliação', icon: require('../../components/icons/apresentacao.png'), onPress: openAvaliacaoModal },
+    {
+      color: '#533BBF',
+      name: 'Percurso',
+      icon: require('../../components/icons/maneira.png'),
+      onPress: openPercursoModal,
+    },
+    {
+      color: '#1F73B3',
+      name: 'Viagens',
+      icon: require('../../components/icons/corrida.png'),
+      onPress: openViagensModal,
+    },
+    {
+      color: '#2FB5B5',
+      name: 'Classificação',
+      icon: require('../../components/icons/avaliacao.png'),
+      onPress: openClassificacaoModal,
+    },
+    {
+      color: '#033C91',
+      name: 'Avaliação',
+      icon: require('../../components/icons/apresentacao.png'),
+      onPress: openAvaliacaoModal,
+    },
   ];
 
   return (
     <View style={styles.container}>
-      <HeaderComponent title='Gustavo Kiyoto' />
+      <HeaderComponent title="Gustavo Kiyoto" isUser={true} />
       <Text style={styles.titulo}>Estatísticas</Text>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.buttonContainer}
-      >
+        contentContainerStyle={styles.buttonContainer}>
         {buttons.map((button, index) => (
           <TouchableOpacity
             key={index}
@@ -84,10 +105,26 @@ const Home = () => {
       <Text style={styles.titulo}>Registrar viagem</Text>
       <RegistrarComponent />
       {/* Renderize os modais quando as variáveis de visibilidade correspondentes forem true */}
-      <PercursoScreen isVisible={percursoModalVisible} onClose={closePercursoModal} />
-      <ViagensScreen isVisible={viagensModalVisible} onClose={closeViagensModal} />
-      <ClassificacaoScreen isVisible={classificacaoModalVisible} onClose={closeClassificacaoModal} />
-      <AvaliacaoScreen isVisible={avaliacaoModalVisible} onClose={closeAvaliacaoModal} />
+      <PercursoScreen
+        isVisible={percursoModalVisible}
+        onClose={closePercursoModal}
+      />
+      <ViagensScreen
+        isVisible={viagensModalVisible}
+        onClose={closeViagensModal}
+      />
+      <ClassificacaoScreen
+        isVisible={classificacaoModalVisible}
+        onClose={closeClassificacaoModal}
+      />
+      <AvaliacaoScreen
+        isVisible={avaliacaoModalVisible}
+        onClose={closeAvaliacaoModal}
+      />
+      <ModalComponent
+        isVisible={isVisible}
+        onClose={() => showTripAlert(false)}
+      />
     </View>
   );
 };
