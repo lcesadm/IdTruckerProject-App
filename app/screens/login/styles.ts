@@ -10,9 +10,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   containerButton: {
-    width: 300,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   textTitle: {
     margin: 40,

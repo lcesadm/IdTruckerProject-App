@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import HeaderComponent from '../../components/headerComponent';
 import useHome from './hooks/useHome';
@@ -12,8 +12,18 @@ import ViagensScreen from '../../components/estatisticas/viagensScreen';
 import ClassificacaoScreen from '../../components/estatisticas/classificacaoScreen';
 import AvaliacaoScreen from '../../components/estatisticas/avaliacaoScreen';
 
-const Home = () => {
-  const { isVisible, showTripAlert } = useHome();
+const Home = ({ route }: any) => {
+  const {
+    userLevel,
+    isFinish,
+    isCheck,
+    isVisible,
+    image,
+    user,
+    xpFinal,
+    isTravel,
+    showTripAlert,
+  } = useHome(route);
 
   // Estados e funções para controlar a visibilidade dos modais
   const [percursoModalVisible, setPercursoModalVisible] = useState(false);
@@ -84,8 +94,15 @@ const Home = () => {
   ];
 
   return (
-    <View style={styles.container}>
-      <HeaderComponent title="Gustavo Kiyoto" isUser={true} />
+    <View>
+      {/* {user.nome == "Gustavo Kiyoto" ? <HeaderComponent title='Empresa XPTO' />} */}
+      <HeaderComponent
+        title={user.nome}
+        isUser={true}
+        xp={user.xp}
+        level={userLevel}
+        progressValue={xpFinal}
+      />
       <Text style={styles.titulo}>Estatísticas</Text>
       <ScrollView
         horizontal
@@ -103,7 +120,11 @@ const Home = () => {
         ))}
       </ScrollView>
       <Text style={styles.titulo}>Entrega em andamento...</Text>
-      <RegistrarComponent />
+      <RegistrarComponent
+        isTravel={isTravel}
+        isCheck={isCheck}
+        isFinish={isFinish}
+      />
       {/* Renderize os modais quando as variáveis de visibilidade correspondentes forem true */}
       <PercursoScreen
         isVisible={percursoModalVisible}
@@ -123,7 +144,7 @@ const Home = () => {
       />
       <ModalComponent
         isVisible={isVisible}
-        onClose={() => showTripAlert(false)}
+        onClose={() => showTripAlert(false, 'close')}
       />
     </View>
   );

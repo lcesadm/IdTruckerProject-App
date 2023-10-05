@@ -6,7 +6,7 @@ import HomeScreen from '../screens/home';
 import ActivityScreen from '../screens/activity';
 import AccountScreen from '../screens/account';
 
-const TabsNavigator = () => {
+const TabsNavigator = ({route}) => {
   const Tab = createBottomTabNavigator();
 
   return (
@@ -26,6 +26,7 @@ const TabsNavigator = () => {
       <Tab.Screen
         name="Home"
         component={HomeScreen}
+        initialParams={{user: route.params.user}}
         options={{
           tabBarIcon: ({ color }) => (
             <Image

@@ -4,12 +4,22 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import InputComponent from '../../components/textFieldComponent';
 import LightButtonComponent from '../../components/lightButtonComponent';
+import LoadingComponent from '../../components/loadingComponent';
 
 import useLogin from './hooks/useLogin';
 import styles from './styles';
 
 const Login = ({ navigation }: any) => {
-  const { onButtonPress } = useLogin(navigation);
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    validation,
+    isLoading,
+    pressBtn,
+    onNavigate,
+  } = useLogin(navigation);
   return (
     <View>
       <LinearGradient
@@ -30,25 +40,43 @@ const Login = ({ navigation }: any) => {
               source={require('../../assets/img/profile.png')}
             />
             <Text style={styles.text}>Login</Text>
-            <InputComponent label="Email" placeholder="janedoe@gmail.com" />
-            <InputComponent
-              label="Senha"
-              secondaryLabel="Esqueci minha senha"
-              placeholder="********"
-              secureTextEntry={true}
-            />
-            <View style={styles.containerButton}>
-              <LightButtonComponent
-                title="Registrar"
-                onPress={() => onButtonPress('RegisterScreen')}
+            <View>
+              <InputComponent
+                label="Email"
+                placeholder="janedoe@gmail.com"
+                onChangeText={(value: any) => setEmail(value)}
+                value={email}
+                validationText={validation}
               />
-              <LightButtonComponent
-                title="Login"
-                onPress={() => onButtonPress('TabsNavigator')}
+              <InputComponent
+                label="Senha"
+                secondaryLabel="Esqueci minha senha"
+                pressableLabel={true}
+                onPressLabel={() => pressBtn(false)}
+                placeholder="********"
+                onChangeText={(value: any) => setPassword(value)}
+                value={password}
+                validationText={validation}
               />
+              <View style={styles.containerButton}>
+                <LightButtonComponent
+                  title="Registrar"
+                  onPress={() => onNavigate('RegisterScreen')}
+                />
+                <LightButtonComponent
+                  title="Login"
+                  onPress={() => pressBtn(true)}
+                />
+              </View>
             </View>
           </View>
         </ScrollView>
+        <LoadingComponent
+          visible={isLoading}
+          size={100}
+          color="#fff"
+          text="Carregando..."
+        />
       </LinearGradient>
     </View>
   );

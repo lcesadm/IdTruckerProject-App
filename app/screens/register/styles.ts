@@ -4,15 +4,17 @@ const win = Dimensions.get('window');
 const ratio = win.width / 541;
 
 const styles = StyleSheet.create({
+  backgroundContainer: {
+    height: '100%',
+  },
   container: {
     flex: 1,
     marginBottom: 100,
     alignItems: 'center',
   },
   containerButton: {
-    width: 300,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   textTitle: {
     margin: 40,
