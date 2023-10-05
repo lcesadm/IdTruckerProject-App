@@ -102,7 +102,7 @@ const Home = () => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      <Text style={styles.titulo}>Registrar viagem</Text>
+      <Text style={styles.titulo}>Entrega em andamento...</Text>
       <RegistrarComponent />
       {/* Renderize os modais quando as variáveis de visibilidade correspondentes forem true */}
       <PercursoScreen

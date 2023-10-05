@@ -41,7 +41,23 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         overflow: 'hidden',
     
-      }
+      },
+      titulo: {
+        marginLeft: 20,
+        top: -48,
+        fontSize: 25,
+        fontFamily: "Barlow-Bold",
+        color: "#ffff" ,
+        textAlign: "center"
+    },
+      textoRegistrar:{
+        marginTop: 8,
+        textAlign: 'center',
+        fontSize: 21,
+        fontFamily: "Barlow Semi Condensed",
+        color: "#ffff"
+
+    },
 });
 
 export default styles;
