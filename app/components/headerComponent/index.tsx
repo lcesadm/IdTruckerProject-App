@@ -28,13 +28,14 @@ const HeaderComponent = ({
         style={styles.backgroundImage}
         source={require('../../assets/img/background.png')}
       />
-
-      <Image
-        style={styles.profileImage}
-        source={require('../../assets/img/user.png')}
-      />
+      {isUser && (
+        <Image
+          style={styles.profileImage}
+          source={require('../../assets/img/user.png')}
+        />
+      )}
       <View style={styles.content}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={isUser ? styles.title : styles.titleCompany}>{title}</Text>
         {isUser && (
           <View>
             <Progress.Bar

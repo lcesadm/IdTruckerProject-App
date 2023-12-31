@@ -35,6 +35,12 @@ const styles = StyleSheet.create({
     color: '#faffff',
     fontFamily: 'Barlow-Bold',
   },
+  titleCompany: {
+    fontSize: 30,
+    marginVertical: 40,
+    color: '#faffff',
+    fontFamily: 'Barlow-Bold',
+  },
   progressBar: {
     unfilledColor: '#45f59a',
     borderColor: '#0bb538',

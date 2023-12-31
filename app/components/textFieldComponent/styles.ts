@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     width: 300,
     fontSize: 20,
     borderRadius: 5,
+    color: '#000',
     backgroundColor: '#fff',
     fontFamily: 'Barlow-SemiBold',
   },
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   image: {
     width: 30,
     height: 30,
-    tintColor: '#000',
+    tintColor: '#808080',
   },
   labelPressed: {
     fontSize: 20,

@@ -4,6 +4,7 @@ import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
 
 import User from '../../../models/User';
+import { verifyValidationField } from '../../../utils/StringUtil';
 
 const useLogin = (navigation: any) => {
   const [email, setEmail] = useState('');
@@ -14,24 +15,12 @@ const useLogin = (navigation: any) => {
 
   useEffect(() => {
     if (email.length != 0)
-      if (
-        validation.substring(
-          validation.indexOf("'") + 1,
-          validation.lastIndexOf("'"),
-        ) == 'Email'
-      )
-        setValidation('');
+      if (verifyValidationField(validation) == 'Email') setValidation('');
   }, [email]);
 
   useEffect(() => {
     if (password.length != 0)
-      if (
-        validation.substring(
-          validation.indexOf("'") + 1,
-          validation.lastIndexOf("'"),
-        ) == 'Senha'
-      )
-        setValidation('');
+      if (verifyValidationField(validation) == 'Senha') setValidation('');
   }, [password]);
 
   useEffect(() => {
@@ -66,6 +55,7 @@ const useLogin = (navigation: any) => {
     auth()
       .signInWithEmailAndPassword(email, password)
       .then(res => {
+        console.log(res)
         database()
           .ref(`/Truckers/${res.user.uid}`)
           .once('value')
@@ -73,7 +63,7 @@ const useLogin = (navigation: any) => {
           .catch(error => setValidation(error));
       })
       .catch(error => {
-        if (error.code == 'auth/user-not-found')
+        if (error.code == 'auth/invalid-login')
           setValidation("O 'Email' não foi encontrado.");
         else if (error.code == 'auth/invalid-email')
           setValidation("Preenche o campo 'Email' válido.");

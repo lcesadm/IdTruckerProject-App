@@ -54,6 +54,7 @@ const TextFieldComponent = ({
             }}
             onChangeText={onChangeText}
             placeholder={placeholder}
+            placeholderTextColor="#c3c3c3"
             secureTextEntry={label == 'Senha' ? showPassword : false}
             keyboardType={keyboardType}
             value={value}

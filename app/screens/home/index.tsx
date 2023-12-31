@@ -12,7 +12,7 @@ import ViagensScreen from '../../components/estatisticas/viagensScreen';
 import ClassificacaoScreen from '../../components/estatisticas/classificacaoScreen';
 import AvaliacaoScreen from '../../components/estatisticas/avaliacaoScreen';
 
-const Home = ({ route }: any) => {
+const Home = ({ navigation, route }: any) => {
   const {
     userLevel,
     isFinish,
@@ -24,6 +24,11 @@ const Home = ({ route }: any) => {
     isTravel,
     showTripAlert,
   } = useHome(route);
+
+  // navigation.reset({
+  //   index: 0,
+  //   routes: [{ name: 'Home' }],
+  // });
 
   // Estados e funções para controlar a visibilidade dos modais
   const [percursoModalVisible, setPercursoModalVisible] = useState(false);

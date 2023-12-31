@@ -1,10 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import styles from './styles'; // Importe os estilos apropriados
-<<<<<<< HEAD
-=======
 import * as Progress from 'react-native-progress';
->>>>>>> 1b8e3f6 (Adicionando a visão do motorista)
 
 interface RegistrarProps {
   isTravel: boolean;

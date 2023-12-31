@@ -4,6 +4,12 @@ import database from '@react-native-firebase/database';
 import auth from '@react-native-firebase/auth';
 
 import User from '../../../models/User';
+import {
+  verifyValidationField,
+  onlyNums,
+  formatCNH,
+  formatCPF,
+} from '../../../utils/StringUtil';
 
 const useRegister = (navigation: any) => {
   const [name, setName] = useState('');
@@ -17,72 +23,38 @@ const useRegister = (navigation: any) => {
 
   useEffect(() => {
     if (name.length != 0)
-      if (
-        validation.substring(
-          validation.indexOf("'") + 1,
-          validation.lastIndexOf("'"),
-        ) == 'Nome Completo'
-      )
+      if (verifyValidationField(validation) == 'Nome Completo')
         setValidation('');
   }, [name]);
 
   useEffect(() => {
-    if (document.cpf.length != 0) {
-      if (
-        validation.substring(
-          validation.indexOf("'") + 1,
-          validation.lastIndexOf("'"),
-        ) == 'CPF'
-      )
-        setValidation('');
-      const cpfRaw = document.cpf.replace(/[^\d]/g, '');
-      if (document.cpf.length >= 11) {
-        setDocument({
-          ...document,
-          cpf: cpfRaw
-            .substring(0, 11)
-            .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'),
-        });
-      } else setDocument({ ...document, cpf: cpfRaw });
-    }
-  }, [document.cpf]);
-
-  useEffect(() => {
     if (document.cnh.length != 0) {
-      if (
-        validation.substring(
-          validation.indexOf("'") + 1,
-          validation.lastIndexOf("'"),
-        ) == 'CNH'
-      )
-        setValidation('');
-      const cnhRaw = document.cnh.replace(/[^\d]/g, '');
+      if (verifyValidationField(validation) == 'CNH') setValidation('');
+      const cnhRaw = onlyNums(document.cnh);
       if (document.cnh.length > 11)
-        setDocument({ ...document, cnh: cnhRaw.substring(0, 11) });
+        setDocument({ ...document, cnh: formatCNH(cnhRaw) });
       else setDocument({ ...document, cnh: cnhRaw });
     }
   }, [document.cnh]);
 
   useEffect(() => {
+    if (document.cpf.length != 0) {
+      if (verifyValidationField(validation) == 'CPF') setValidation('');
+      const cpfRaw = onlyNums(document.cpf);
+      if (document.cpf.length >= 11) {
+        setDocument({ ...document, cpf: formatCPF(cpfRaw) });
+      } else setDocument({ ...document, cpf: cpfRaw });
+    }
+  }, [document.cpf]);
+
+  useEffect(() => {
     if (email.length != 0)
-      if (
-        validation.substring(
-          validation.indexOf("'") + 1,
-          validation.lastIndexOf("'"),
-        ) == 'Email'
-      )
-        setValidation('');
+      if (verifyValidationField(validation) == 'Email') setValidation('');
   }, [email]);
 
   useEffect(() => {
     if (password.length != 0)
-      if (
-        validation.substring(
-          validation.indexOf("'") + 1,
-          validation.lastIndexOf("'"),
-        ) == 'Senha'
-      )
-        setValidation('');
+      if (verifyValidationField(validation) == 'Senha') setValidation('');
   }, [password]);
 
   useEffect(() => {
@@ -122,7 +94,7 @@ const useRegister = (navigation: any) => {
       .then(res => {
         database()
           .ref(`/Truckers/${res.user.uid}`)
-          .set({
+          .set(<User>{
             nome: name,
             cnh: document.cnh,
             cpf: document.cpf,
@@ -164,6 +136,11 @@ const useRegister = (navigation: any) => {
           setValidation("A 'Senha' tem que ter 6 caracteres no mínimo.");
         else setValidation(error.code);
       });
+    auth().onAuthStateChanged(user => {
+      user?.updateProfile({ displayName: name });
+      console.log(user);
+    });
+    console.log(auth().currentUser);
   };
 
   const checkValidation: any = () => {
